@@ -1,9 +1,8 @@
 //
 //  ANProgressButton+AttributedTitle.h
-//  ShipMate
 //
-//  Created by Oksana Kovalchuk on 14/12/14.
-//
+//  Created by Oksana Kovalchuk on 11/28/13.
+//  Copyright (c) 2013 ANODA. All rights reserved.
 //
 
 #import "ANProgressButton.h"

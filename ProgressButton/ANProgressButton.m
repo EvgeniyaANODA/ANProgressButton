@@ -1,7 +1,7 @@
 //
-//  CDIndicatorButton.m
-//  CtrlDo
+//  ANProgressButton.m
 //
+//  Created by Oksana Kovalchuk on 11/28/13.
 //  Copyright (c) 2013 ANODA. All rights reserved.
 //
 

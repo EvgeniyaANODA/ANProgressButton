@@ -1,8 +1,7 @@
 //
-//  CDIndicatorButton.h
-//  CtrlDo
+//  ANProgressButton.h
 //
-//  Created by Max Kotelevskiy on 11/28/13.
+//  Created by Oksana Kovalchuk on 11/28/13.
 //  Copyright (c) 2013 ANODA. All rights reserved.
 //
 

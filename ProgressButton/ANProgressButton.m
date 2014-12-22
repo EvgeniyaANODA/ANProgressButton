@@ -7,7 +7,6 @@
 
 #import "ANProgressButton.h"
 #import "UIImage+ANAdditions.h"
-#import "UIFont+ANAdditions.h"
 #import "ReactiveCocoa.h"
 #import "Masonry.h"
 #import "ANColorThemeButton.h"

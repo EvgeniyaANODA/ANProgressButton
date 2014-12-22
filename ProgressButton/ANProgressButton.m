@@ -6,12 +6,11 @@
 //
 
 #import "ANProgressButton.h"
-#import "FrameAccessor.h"
 #import "UIImage+ANAdditions.h"
-#import "ANButtonTheme.h"
 #import "UIFont+ANAdditions.h"
 #import "ReactiveCocoa.h"
 #import "Masonry.h"
+#import "ANColorThemeButton.h"
 
 @interface ANProgressButton ()
 
@@ -19,7 +18,7 @@
 
 @implementation ANProgressButton
 
-+ (instancetype)buttonWithTheme:(ANButtonTheme *)theme
++ (instancetype)buttonWithTheme:(ANColorThemeButton *)theme
 {
     ANProgressButton* button = [ANProgressButton buttonWithType:UIButtonTypeCustom];
     button.theme = theme;
@@ -53,7 +52,7 @@
     }];
 }
 
-- (void)setTheme:(ANButtonTheme *)theme
+- (void)setTheme:(ANColorThemeButton *)theme
 {
     _theme = theme;
     [self setTitleColor:theme.normalStateFontColor forState:UIControlStateNormal];

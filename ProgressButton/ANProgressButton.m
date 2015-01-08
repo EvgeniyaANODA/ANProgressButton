@@ -9,7 +9,8 @@
 #import "UIImage+ANAdditions.h"
 #import "ReactiveCocoa.h"
 #import "Masonry.h"
-#import "ANColorThemeButton.h"
+#import "UIButton+ANThemes.h"
+#import "ANProgressButton+ANButtonStateAnimator.h"
 
 @interface ANProgressButton ()
 
@@ -17,9 +18,9 @@
 
 @implementation ANProgressButton
 
-+ (instancetype)buttonWithTheme:(ANColorThemeButton *)theme
++ (instancetype)buttonWithTheme:(id<ANColorThemeButtonInterface>)theme
 {
-    ANProgressButton* button = [ANProgressButton buttonWithType:UIButtonTypeCustom];
+    ANProgressButton* button = [self buttonWithType:UIButtonTypeCustom];
     button.theme = theme;
     return button;
 }
@@ -32,6 +33,8 @@
         self.adjustsImageWhenHighlighted = NO;
         self.adjustsImageWhenDisabled = NO;
         self.clipsToBounds = YES;
+        self.exclusiveTouch = YES;
+        [self an_animationsSetup];
     }
     return self;
 }
@@ -42,8 +45,8 @@
 {
     [super setRac_command:rac_command];
     RACSignal* executing = rac_command.executing;
-    [executing subscribeNext:^(NSNumber* x)
-    {
+    [executing subscribeNext:^(NSNumber* x) {
+        
         [self bringSubviewToFront:self.indicator];
          x.boolValue ? [self.indicator startAnimating] : [self.indicator stopAnimating];
     } completed:^{
@@ -51,23 +54,15 @@
     }];
 }
 
+- (void)setTitle:(NSString *)title
+{
+    [self setTitle:title forState:UIControlStateNormal];
+}
+
 - (void)setTheme:(ANColorThemeButton *)theme
 {
     _theme = theme;
-    [self setTitleColor:theme.normalStateFontColor forState:UIControlStateNormal];
-    [self setTitleColor:theme.selectedStateFontColor forState:UIControlStateSelected];
-    [self setTitleColor:theme.selectedStateFontColor forState:UIControlStateHighlighted];
-    [self setTitleColor:theme.disabledStateFontColor forState:UIControlStateDisabled];
-    
-    [self setBackgroundImage:[UIImage an_imageWithColor:theme.normalStateBackground] forState:UIControlStateNormal];
-    [self setBackgroundImage:[UIImage an_imageWithColor:theme.selectedStateBackground] forState:UIControlStateSelected];
-    [self setBackgroundImage:[UIImage an_imageWithColor:theme.selectedStateBackground] forState:UIControlStateHighlighted];
-    [self setBackgroundImage:[UIImage an_imageWithColor:theme.disabledStateBackground] forState:UIControlStateDisabled];
-    
-    self.layer.borderColor = theme.borderColor.CGColor;
-    self.layer.borderWidth = theme.borderWidth;
-    self.layer.cornerRadius = theme.cornerRadius;
-    self.titleLabel.font = theme.titleLabelFont;
+    [self an_updateAppearanceWithTheme:_theme];
 }
 
 - (UIActivityIndicatorView *)indicator

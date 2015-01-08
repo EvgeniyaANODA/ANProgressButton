@@ -8,13 +8,15 @@
 static CGFloat kANProgressButtonHeight = 44;
 static UIEdgeInsets const kRoundedButtonInsets = {0, 15, 15, 15};
 
-@class ANColorThemeButton;
+#import "ANColorThemeButton.h"
 
 @interface ANProgressButton : UIButton
 
 @property (nonatomic, strong) UIActivityIndicatorView* indicator;
-@property (nonatomic, strong) ANColorThemeButton* theme;
+@property (nonatomic, strong) id<ANColorThemeButtonInterface> theme;
+@property (nonatomic, strong) NSString* title;
+@property (nonatomic, assign) isLoading;
 
-+ (instancetype)buttonWithTheme:(ANColorThemeButton*)theme;
++ (instancetype)buttonWithTheme:(id<ANColorThemeButtonInterface>)theme;
 
 @end

@@ -54,6 +54,19 @@
     }];
 }
 
+- (void)setIsLoading:(BOOL)isLoading
+{
+    _isLoading = isLoading;
+    if (_isLoading)
+    {
+        [self.indicator startAnimating];
+    }
+    else
+    {
+        [self.indicator stopAnimating];
+    }
+}
+
 - (void)setTitle:(NSString *)title
 {
     [self setTitle:title forState:UIControlStateNormal];

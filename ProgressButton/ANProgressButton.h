@@ -15,7 +15,7 @@ static UIEdgeInsets const kRoundedButtonInsets = {0, 15, 15, 15};
 @property (nonatomic, strong) UIActivityIndicatorView* indicator;
 @property (nonatomic, strong) id<ANColorThemeButtonInterface> theme;
 @property (nonatomic, strong) NSString* title;
-@property (nonatomic, assign) isLoading;
+@property (nonatomic, assign) BOOL isLoading;
 
 + (instancetype)buttonWithTheme:(id<ANColorThemeButtonInterface>)theme;
 

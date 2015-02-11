@@ -22,6 +22,7 @@
 {
     ANProgressButton* button = [self buttonWithType:UIButtonTypeCustom];
     button.theme = theme;
+    [button an_animationsSetup];
     return button;
 }
 
@@ -34,7 +35,6 @@
         self.adjustsImageWhenDisabled = NO;
         self.clipsToBounds = YES;
         self.exclusiveTouch = YES;
-        [self an_animationsSetup];
     }
     return self;
 }
@@ -65,6 +65,7 @@
     {
         [self.indicator stopAnimating];
     }
+    self.enabled = !isLoading;
 }
 
 - (void)setTitle:(NSString *)title

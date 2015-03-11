@@ -22,7 +22,6 @@
 {
     ANProgressButton* button = [self buttonWithType:UIButtonTypeCustom];
     button.theme = theme;
-    [button an_animationsSetup];
     return button;
 }
 
